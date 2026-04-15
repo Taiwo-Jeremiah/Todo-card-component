@@ -9,10 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const timeRemainingElement = document.querySelector('[data-testid="test-todo-time-remaining"]');
     const statusText = document.querySelector('[data-testid="test-todo-status"]');
     const checkbox = document.querySelector('[data-testid="test-todo-complete-toggle"]');
-// DEADLINE_ISO
-    /**
-     * Updates the "Time Remaining" display based on the current time.
-     */
+// deadlineDefault
+    //  Updates the "Time Remaining" display based on the current time.
+     
     function updateCountdown() {
         const deadline = new Date(deadlineDefault);
         const now = new Date();
@@ -38,9 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /**
-     * Handles the status toggle logic
-     */
+    // Handles the status toggle logic
+    
     checkbox.addEventListener('change', (e) => {
         if (e.target.checked) {
             statusText.innerText = "Completed";
@@ -53,22 +51,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    /**
-     * Button Click Handlers (For interactivity points)
-     */
+
+    // Button Click Handlers (For interactivity points)
+     
     document.querySelector('[data-testid="test-todo-edit-button"]').addEventListener('click', () => {
         alert("Edit mode triggered!");
     });
 
     document.querySelector('[data-testid="test-todo-delete-button"]').addEventListener('click', () => {
         if(confirm("Are you sure you want to delete this task?")) {
-            document.querySelector('.todo-card').remove();
+            // document.querySelector('.todo-card').remove();
         }
     });
 
     // Initial runs
     updateCountdown();
 
-    // 2. The "Alive" factor: Update every 60 seconds as requested
+    // 2. Update every 60 seconds as requested
     setInterval(updateCountdown, 60000);
 });

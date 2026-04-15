@@ -20,12 +20,6 @@ body {
   margin: 0;
 }
 
-ul{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
 /* Card Container */
 .todo-card {
   background: var(--card-bg);
@@ -81,6 +75,9 @@ ul{
   display: flex;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
+  list-style: none;   /* ADD THIS */
+  padding: 0;         /* ADD THIS */
+  margin: 0 0 1.5rem; /* adjust */
 }
 
 .tag {
