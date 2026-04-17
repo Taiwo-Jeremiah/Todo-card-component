@@ -1,4 +1,4 @@
-# Stage 0: Testable Todo Item Card
+# Stage 1: Testable Todo Item Card
 
 A high-fidelity, responsive, and fully testable Todo Task Card built with **Vanilla HTML, CSS, and JavaScript**. This project focuses on semantic structure, accessibility (a11y), and automated testability.
 
