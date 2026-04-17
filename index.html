@@ -3,48 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo card item</title>
+    <title>Advanced Todo Card - Stage 1a</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <article data-testid="test-todo-card" class="todo-card">
-  <div class="card-header">
-    <h2 class="task-title" data-testid="test-todo-title">Stage 0 Frontend</h2>
-    <span class="priority-badge" data-testid="test-todo-priority">High</span>
-  </div>
+        <div id="view-container">
+            <div class="card-header">
+                <h2 class="task-title" data-testid="test-todo-title">Stage 1 Frontend</h2>
+                <div class="priority-wrapper">
+                    <span id="priority-dot" data-testid="test-todo-priority-indicator"></span>
+                    <span class="priority-badge" data-testid="test-todo-priority">High</span>
+                </div>
+            </div>
 
-  <p class="task-desc" data-testid="test-todo-description">
-    Build a clean, high-fidelity task card using vanilla HTML, CSS, and JS.
-  </p>
+            <div id="desc-container" data-testid="test-todo-collapsible-section">
+                <p class="task-desc" data-testid="test-todo-description">
+                    Build a clean, high-fidelity task card using vanilla HTML, CSS, and JS. This is an advanced stateful component.
+                </p>
+            </div>
+            <button id="expand-btn" data-testid="test-todo-expand-toggle" aria-expanded="false" aria-controls="desc-container">Read More</button>
 
-  <ul class="tag-list" data-testid="test-todo-tags">
-    <li class="tag" data-testid="test-todo-tag-frontend">Frontend</li>
-    <li class="tag" data-testid="test-todo-tag-hng">HNG</li>
-  </ul>
+            <ul class="tag-list" data-testid="test-todo-tags">
+                <li class="tag" data-testid="test-todo-tag-frontend">Frontend</li>
+                <li class="tag" data-testid="test-todo-tag-hng">HNG</li>
+            </ul>
 
-  <div class="card-footer">
-    <div class="meta-item">
-      <span class="label-text">Due Date</span>
-      <time class="date-val" data-testid="test-todo-due-date" datetime="2026-04-16">Apr 16, 2026</time>
-    </div>
-    <div class="meta-item">
-      <span class="label-text">Ends In</span>
-      <span class="time-val" data-testid="test-todo-time-remaining">Calculating...</span>
-    </div>
+            <div class="card-footer">
+                <div class="meta-item">
+                    <span class="label-text">Due Date</span>
+                    <time class="date-val" data-testid="test-todo-due-date" datetime="2026-04-16">Apr 16, 2026</time>
+                </div>
+                <div class="meta-item">
+                    <span class="label-text">Ends In</span>
+                    <span class="time-val" data-testid="test-todo-time-remaining" aria-live="polite">Calculating...</span>
+                    <span id="overdue-tag" data-testid="test-todo-overdue-indicator" style="display:none">Overdue</span>
+                </div>
 
-    <div class="actions">
-      <label class="status-toggle">
-        <input type="checkbox" data-testid="test-todo-complete-toggle">
-        <span class="date-val" data-testid="test-todo-status">Pending</span>
-      </label>
-      
-      <div class="btn-group">
-        <button data-testid="test-todo-edit-button">Edit</button>
-        <button class="delete-btn" data-testid="test-todo-delete-button">Delete</button>
-      </div>
-    </div>
-  </div>
-</article>
+                <div class="actions">
+                    <div class="status-group">
+                        <label class="status-toggle">
+                            <input type="checkbox" data-testid="test-todo-complete-toggle">
+                            <span class="date-val" data-testid="test-todo-status">Pending</span>
+                        </label>
+                        <select  id="status-select" data-testid="test-todo-status-control" aria-label="Change Status">
+                            <option value="Pending">Pending</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Done">Done</option>
+                        </select>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button data-testid="test-todo-edit-button" id="edit-trigger">Edit</button>
+                        <button class="delete-btn" data-testid="test-todo-delete-button">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form id="edit-form" data-testid="test-todo-edit-form" style="display: none;">
+            <label for="edit-title">Title</label>
+            <input type="text" id="edit-title" data-testid="test-todo-edit-title-input">
+
+            <label for="edit-desc">Description</label>
+            <textarea id="edit-desc" data-testid="test-todo-edit-description-input"></textarea>
+
+            <label for="edit-priority">Priority</label>
+            <select id="edit-priority" data-testid="test-todo-edit-priority-select">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+
+            <label for="edit-date">Due Date</label>
+            <input type="datetime-local" id="edit-date" data-testid="test-todo-edit-due-date-input">
+
+            <div class="edit-actions">
+                <button type="button" data-testid="test-todo-save-button" class="save-btn">Save</button>
+                <button type="button" data-testid="test-todo-cancel-button" class="cancel-btn">Cancel</button>
+            </div>
+        </form>
+    </article>
     <script src="script.js"></script>
 </body>
 </html>
